@@ -25,7 +25,9 @@ The Version number can be changed, but so far this is only tested for 17.0.0 and
 
 You can as well just execute the script step by step in your terminal.
 
-[![pdf](keycloak-quarkus-m1-builder.sh)](./keycloak-quarkus-m1-builder.sh)
+[keycloak-quarkus-m1-builder.sh](./keycloak-quarkus-m1-builder.sh)
+
+
 
 ```Bash
 VERSION=17.0.0 # set version here
