@@ -13,7 +13,7 @@ Terminal Befehl zum Starten:
 ### Major Differences
 
 - Keycloak now relies on Quarkus instead of Wildlfy
-- Quarkus is a jvm framework, which is pretty efficient and has fast loading times, made for virtual maschines. But  other than wildfly it is not an java apllication server, so certain dependencies could be missing and have to be added manualy.
+- Quarkus is a jvm framework, which is pretty efficient and has fast loading times, made for virtual machines. But other than wildfly it is not an java apllication server, so certain dependencies could be missing and have to be added manually.
 - Changes affecting the providers or runtime configuration can no longer be made during server up time, only initially before start up (this makes .CLI-Files mostly irrelevant).
 
 ### **For M1 Mac users only:** Build the image
@@ -140,7 +140,7 @@ ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
 
 The first three lines build the image. As you can see, I used the custom image I build earlier for M1 Macs. Once the official verison is out or if you are using an Intel Mac, you can use the official image. The second line loads my custom SPI in that image and the third one is the acutal building step.
 
-The rest of the file uses this image and applies configurations onto that. Not that you have to copy here any folder you modified, for example providers, because of my custom SPI. You especially have to copy the „/opt/keycloak/lib/quarkus/„ folder. 
+The rest of the file uses this image and applies configurations onto that. Note that you have to copy here any folder you modified, for example providers, because of my custom SPI. You especially have to copy the „/opt/keycloak/lib/quarkus/„ folder. 
 
 From there on you just configure the image according to your needs. For compability reasons it could be useful to change „KC_HTTP_RELATIVE_PATH" to „/auth“ because in 17.0.0 this got removed.
 
@@ -151,7 +151,7 @@ Note that in the last line the container starts in developer mode. This should b
 ### Dependencies
 
 
-Because quarkus is not an java application server, some dependencies that are necessary for your project will not be loaded. To check this you should take a look into your target folder and compare the contents with your pom file. If certain dependencies did not load, add them manualy.
+Because quarkus is not an java application server, some dependencies that are necessary for your project will not be loaded. To check this you should take a look into your target folder and compare the contents with your pom file. If certain dependencies did not load, add them manually.
 
 If you are using the maven assemble plugin it might also be necessary to restrict transative dependencies, because this could result in an overlapping of different versions of the same dependency. Do this by adding a custom descriptor in your maven assembly plugin. It should look like that:
 
@@ -177,7 +177,7 @@ If you are using the maven assemble plugin it might also be necessary to restric
 ```
 
 
-The only relevant part here is „useTransitiveDependencies“ which you want to set to false. By doing this you might have to add some dependencies manualy.
+The only relevant part here is „useTransitiveDependencies“ which you want to set to false. By doing this you might have to add some dependencies manually.
 
 ### TL;DR:
 
