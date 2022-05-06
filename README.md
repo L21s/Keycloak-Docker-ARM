@@ -1,9 +1,12 @@
-# Keycloak ARM Guide for Version < 17
+# Keycloak ARM Guide for Version >= 17
 ###  Build the image
 
-The following script will build a local image of Keycloak 17.0.0 on M1 Macs. By enabling the last line an instance of Keycloak will directly start on [http://localhost:8080/auth/](http://localhost:8080/auth/)
+The following script will build a local image of Keycloak 17.0.0 on M1 Macs. 
+
+By enabling the last line an instance of Keycloak will directly start on [http://localhost:8080/auth/](http://localhost:8080/auth/)
 
 The Version number can be changed, but so far this is only tested for 17.0.0 and M1 Macs.
+
 
 You can as well just execute the script step by step in your terminal.
 
@@ -22,5 +25,10 @@ docker build -t "quarkus-keycloak:$VERSION" .
 ### Start with this command: ```./keycloak-m1-builder.sh```
 
 You might as well want to change the name of the image to something other than `quarkus-keycloak :$VERSION`, but beware that if you name the image `quay.io/keycloak/keycloak:$VERSION` (the official image name) docker will probably pull the official image and will not use the one you already build.
+
+### Build Versions prior to 17.0
+If you want to build a version < 17.0 take a look at:
+https://github.com/L21s/Keycloak-Docker-ARM/releases/tag/16.1.0
+
 
 Referenced from this comment: https://github.com/docker/for-mac/issues/5310#issuecomment-877653653
