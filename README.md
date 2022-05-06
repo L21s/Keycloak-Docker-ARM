@@ -1,5 +1,6 @@
-# Keycloak ARM Guide for Version >= 17
-###  Build the image
+# Keycloak M1 ARM Guide 
+
+###  Build the image for Keycloak Version >= 17 (Quarkus based)
 
 The following script will build a local image of Keycloak 17.0.0 on M1 Macs. 
 
@@ -19,16 +20,30 @@ cd /tmp
 git clone git@github.com:keycloak/keycloak.git
 cd keycloak/quarkus/container
 git checkout $VERSION
-docker build -t "quarkus-keycloak:$VERSION" .
-#docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin "quarkus-keycloak:$VERSION" start-dev --http-relative-path /auth
+docker build -t "quay.io/keycloak/keycloak:$VERSION" .
+#docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin "quay.io/keycloak/keycloak:$VERSION" start-dev --http-relative-path /auth
 ```
-### Start with this command: ```./keycloak-m1-builder.sh```
+Start with this command: ```./keycloak-m1-builder.sh```
 
-You might as well want to change the name of the image to something other than `quarkus-keycloak :$VERSION`, but beware that if you name the image `quay.io/keycloak/keycloak:$VERSION` (the official image name) docker will probably pull the official image and will not use the one you already build.
 
-### Build Versions prior to 17.0
-If you want to build a version < 17.0 take a look at:
-https://github.com/L21s/Keycloak-Docker-ARM/releases/tag/16.1.0
 
+
+
+###  Build the image for Keycloak Version <= 16.1.0 (WildFly based)
+
+For building versions older or equal 16.1.0 use:
+
+```
+#/bin/zsh
+
+VERSION=16.1.0 # set version here
+
+cd /tmp
+git clone git@github.com:keycloak/keycloak-containers.git
+cd keycloak-containers/server
+git checkout $VERSION
+docker build -t "jboss/keycloak:${VERSION}" .
+docker build -t "quay.io/keycloak/keycloak:${VERSION}" .
+```
 
 Referenced from this comment: https://github.com/docker/for-mac/issues/5310#issuecomment-877653653
