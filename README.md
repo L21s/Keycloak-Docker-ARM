@@ -22,3 +22,5 @@ docker build -t "quarkus-keycloak:$VERSION" .
 ### Start with this command: ```./keycloak-m1-builder.sh```
 
 You might as well want to change the name of the image to something other than `quarkus-keycloak :$VERSION`, but beware that if you name the image `quay.io/keycloak/keycloak:$VERSION` (the official image name) docker will probably pull the official image and will not use the one you already build.
+
+Referenced from this comment: https://github.com/docker/for-mac/issues/5310#issuecomment-877653653
